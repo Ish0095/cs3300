@@ -3,6 +3,13 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.7.0'
 
+group :development, :test do
+  # There may be other lines in this block already. Simply append the following after:
+  %w[rspec-core rspec-expectations rspec-mocks rspec-rails rspec-support].each do |lib|
+      gem lib, git: "https://github.com/rspec/#{lib}.git", branch: 'main' # Previously '4-0-dev' or '4-0-maintenance' branch
+  end
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.6'
 # Use sqlite3 as the database for Active Record
@@ -17,9 +24,9 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'mini_racer'
   
-group :development, :test do
-  gem 'rspec-rails', '~> 3.7'
-end
+#group :development, :test do
+  #gem 'rspec-rails', '~> 3.7'
+#end
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -70,7 +77,14 @@ group :test do
   gem 'simplecov', require: false
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'devise'
+  gem 'factory_bot_rails'
 end
+
+
+
+
+
 
 
 
