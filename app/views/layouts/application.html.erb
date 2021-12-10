@@ -8,27 +8,52 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <div class="container text-center"
-    <div class="welcome">
-      <% if user_signed_in? %>
-        <h2> Welcome, <%=current_user.email%> </h2>
-      <% else %>
-        <h2> Welcome! </h2>
-      <% end %>
 
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="nav-item active d-flex align-items-center">  
+  <div class="container text-center"
+  <div class="welcome">
+    <% if user_signed_in? %>
+      <h2> Welcome, <%=current_user.email%> </h2>
+    <% else %>
+      <h2> Welcome! </h2>
+    <% end %>
+
+  </div>
+</div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">CS3300</a>
+   
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item active d-flex align-items-center">
+          <a class="nav-link active" aria-current="page" href="#"><%= link_to "Home", root_path %>  </a>
+        </li>
+        <li class="nav-item active d-flex align-items-center">
+          <a class="nav-link"href="#"><%= link_to "Profile", edit_user_registration_path %>  </a>
+        </li>
+        <li class="nav-item active d-flex align-items-center">
+          <a class="nav-link" href="#"><a><% if not user_signed_in? %> <%= link_to "Login", new_user_session_path %>
+          <% else %> <%= link_to "Logout", destroy_user_session_path, method: :delete %> <% end %> </a>  </a>
+          
+         
+        
+        </li>
+        <li class="nav-item active d-flex align-items-center-">
+        <a class="nav-link" href="#"><%= link_to "Register", new_user_registration_path %>  </a>
+      </ul>
+      <form class="d-flex">
+       
+      </form>
     </div>
   </div>
+</nav>
 
-  <body>
-    <%= yield %>
-  </body>
+<div class="container center"
+<body>
+  <%= yield %>
+</body>
+</div>
 
-  <div class="options">
-    <% if user_signed_in? %>
-      <button><%= link_to "logout", destroy_user_session_path, method: :delete %></button>
-    <% else %>
-      <button><%= link_to "login", new_user_session_path %></button>
-      <button><%= link_to "register", new_user_registration_path %></button>
-    <% end %>
-  </div>
+ 
 </html>
